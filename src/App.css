@@ -1,0 +1,49 @@
+:root{
+--thor-1:#8D0E27;
+--thor-2:#AD6B66;
+--thor-3:#4E6793;
+--thor-4:#616F35;
+--thor-5:#645183;
+--thor-6:#469C83;
+--thor-7:#C24B1E;
+--thor-8:#242C96;
+--thor-9:#CB274F;
+--thor-10:#431A51;
+--thor-11:#9DC025;
+--thor-12:#DC8A18;
+--thor-13:#0D0465;
+--thor-14:#3A992F;
+--thor-15:#9A0F2B;
+--thor-16:#EDCD0F;
+--thor-17:#C52B88;
+--thor-18:#1F7F9C;
+--sjcream: #EBEBEB;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: var(--sjcream);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: top;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: var(--thor-18);
+}
+
+.App-link {
+  color: #09d3ac;
+}
+.box-copy{
+  color: var(--thor-6);
+}
+.header-copy{
+  color: var(--thor-6);
+}
