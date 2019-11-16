@@ -41,7 +41,7 @@ class Test extends Component {
           style={{ width: '100%' }}
         />
         <div className="header-copy">Below is the output from the scanner</div>
-        <p>{this.state.result}</p>
+        <a href = "{this.state.result}"> click to load page: {this.state.result}</p>
         <Copy/>
       </div>
     )
