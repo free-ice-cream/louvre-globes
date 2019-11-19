@@ -16,21 +16,77 @@ function App() {
     </div>
   );
 }
+
+
+
 class Test extends Component {
+  constructor() {
+    super()
+  }
+  componentWillMount() {
+    this.getData(0)
+  }
+
+buttonGlobe(e){
+
+  e.preventDefault();
+
+  let globe1 = "http://fic.li/globe?globe=1";
+
+
+    let xhr = new XMLHttpRequest()
+
+    xhr.addEventListener('load', () => {
+
+      console.log(xhr.responseText)
+
+    })
+
+      xhr.open('GET', 'http://178.62.50.55:3000/?service=smashing&user=tired&globe=1')
+
+    xhr.send()
+
+
+}
+
+
+  getData(n) {
+
+
+    let xhr = new XMLHttpRequest()
+
+    xhr.addEventListener('load', () => {
+
+      console.log(xhr.responseText)
+
+    })
+
+      xhr.open('GET', 'http://178.62.50.55:3000/?service=smashing&user=tired&globe=1')
+
+    xhr.send()
+  }
+
   state = {
     result: 'No result'
   }
+
+
 
   handleScan = data => {
     if (data) {
       this.setState({
         result: data
       })
+      if(data === "fic.li/globe?globe=1"){
+        this.getData(1);
+      }
     }
   }
   handleError = err => {
     console.error(err)
   }
+
+
   render() {
     return (
       <div>
@@ -41,12 +97,18 @@ class Test extends Component {
           style={{ width: '100%' }}
         />
         <div className="header-copy">Below is the output from the scanner</div>
-        <a href = {this.state.result}> click to load page: {this.state.result}</a>
+        <p>click the button to load the url shown</p>
+        <button onClick={this.buttonGlobe} data-globe={this.state.result}>{this.state.result}</button>
+
         <Copy/>
       </div>
     )
   }
 }
+
+
+
+
 class Copy extends Component {
   state ={
 
