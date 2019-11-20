@@ -31,7 +31,7 @@ buttonGlobe(e){
 
   e.preventDefault();
 
-  let globe1 = "http://fic.li/globe?globe=1";
+  let globe1 = "fic.li/globe?globe=1";
 
 
     let xhr = new XMLHttpRequest()
@@ -42,7 +42,7 @@ buttonGlobe(e){
 
     })
 
-      xhr.open('GET', 'http://178.62.50.55:3000/?service=smashing&user=tired&globe=1')
+      xhr.open('GET', 'https://178.62.50.55:3000/?service=smashing&user=tired&globe=1')
 
     xhr.send()
 
@@ -61,7 +61,7 @@ buttonGlobe(e){
 
     })
 
-      xhr.open('GET', 'http://178.62.50.55:3000/?service=smashing&user=tired&globe=1')
+      xhr.open('GET', 'https://178.62.50.55:3000/?service=smashing&user=tired&globe=1')
 
     xhr.send()
   }
