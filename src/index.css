@@ -36,12 +36,24 @@
 --thor-17:#C52B88;
 --thor-18:#1F7F9C;
 
---louvre-grey-1:#4D4A58;
---louvre-grey-2:#5E5A6B;
---louvre-grey-3:#706B80;
---louvre-grey-4:#8D899C;
---louvre-grey-5:#A7A3B2;
---louvre-grey-6:#BDBBC6;
+--louvre-grey-1-sj:#4D4A58;
+--louvre-grey-2-sj:#5E5A6B;
+--louvre-grey-3-sj:#706B80;
+--louvre-grey-4-sj:#8D899C;
+--louvre-grey-5-sj:#A7A3B2;
+--louvre-grey-6-sj:#BDBBC6;
+
+--louvre-black:#000000;
+--louvre-grey-1:#4F4C4D;
+--louvre-grey-2:#656363;
+--louvre-grey-3:#7B7979;
+--louvre-grey-4:#808080;
+--louvre-grey-5:#999999;
+--louvre-grey-6:#B3B3B3;
+--louvre-grey-7:#CCCCCC;
+--louvre-grey-8:#E6E6E6;
+
+
 }
 
 
@@ -104,7 +116,13 @@ box-shadow: none  !important;
   max-height: 50vh;
 box-sizing: border-box;
 }
+
+
+
 .bar{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
   min-width: 100%;
   min-height: 5vh;
   background-color: var(--louvre-grey-2);
@@ -112,7 +130,28 @@ box-sizing: border-box;
 
 
 }
+
+.banner-brace{
+  display: flex;
+
+  flex:1;
+  background-color: red;
+
+}
+.language-button {
+  float: right;
+  display: flex;
+  flex:1;
+  background-color: blue;
+}
+.bar-sec{
+  flex:1;
+}
+
+
+
 .lang-but{
+
   background-color: var(--thor-4);
   color: var(--louvre-grey-5);
   /* color: var(--thor-11); */

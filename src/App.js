@@ -6,21 +6,19 @@ import { Switch, Route } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-73698980-4');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 class Biggie extends Component {
   constructor() {
     super();
     this.state = {
       gateway:"https://node.snowglobes.ae/",
-      code1:"http://www.snowglobes.ae/1",
+      code1:"http://www.snowglobes.ae/3",
       code2:"http://www.snowglobes.ae/2",
-      code3:"http://www.snowglobes.ae/3",
-      code4:"http://www.snowglobes.ae/4",
-      code5:"http://www.snowglobes.ae/5",
-      code6:"http://www.snowglobes.ae/6",
-      code7:"http://www.snowglobes.ae/7",
-      code8:"http://www.snowglobes.ae/8",
+      code3:"http://www.snowglobes.ae/4",
+      code4:"http://www.snowglobes.ae/5",
       user:"",
       service:"",
       device:"",
@@ -30,16 +28,40 @@ class Biggie extends Component {
       currentPage:"newscan"
     }
   }
-  setLanguage = () => {
-    if(this.state.languageSelection === "en"){
-      this.setState({languageSelection:"ar"})
-    }else if(this.state.languageSelection === "ar"){
-      this.setState({languageSelection:"en"});
-    };
-    console.log("setLanguage sees ", this.state.languageSelection);
+  // setLanguage = () => {
+  //   if(this.state.languageSelection === "en"){
+  //     this.setState({languageSelection:"ar"})
+  //   }else if(this.state.languageSelection === "ar"){
+  //     this.setState({languageSelection:"en"});
+  //   };
+  //   console.log("setLanguage sees ", this.state.languageSelection);
+  //   this.setContent();
+  //   return  this.state.languageSelection ;
+  // }
+
+  setAr= () => {
+
+    this.setState({languageSelection:"ar"})
+
     this.setContent();
     return  this.state.languageSelection ;
   }
+  setFr= () => {
+
+    this.setState({languageSelection:"fr"})
+
+    this.setContent();
+    return  this.state.languageSelection ;
+  }
+  setEn= () => {
+
+    this.setState({languageSelection:"en"})
+
+    this.setContent();
+    return  this.state.languageSelection ;
+  }
+
+
 
   componentWillMount() {
     // this.mounted = true;
@@ -268,7 +290,7 @@ class Biggie extends Component {
                 <QrReader delay={300} onError={this.handleError} onScan={this.handleScan}/>
               </div>
               <div className="pageContainer">
-                <Banner setLanguage={this.setLanguage} {...this.state} />
+                <Banner setFr ={this.setFr} setAr ={this.setAr} setEn ={this.setEn} {...this.state} />
                 <Copy {...this.state} mode={this.state.currentPage}/>
                 <Logo {...this.state}/>
               </div>
@@ -284,7 +306,7 @@ class Biggie extends Component {
                   </div>
                     <div className="pageContainer">
                       { this.callGateway(1)}
-                      <Banner setLanguage={this.setLanguage} {...this.state} />
+                      <Banner  setFr ={this.setFr} setAr ={this.setAr} setEn ={this.setEn}{...this.state} />
                       <Copy {...this.state} mode={"congrat"}/>
                       <Logo {...this.state}/>
                     </div>
@@ -302,7 +324,7 @@ class Biggie extends Component {
 
                     { this.callGateway(2)}
 
-                      <Banner setLanguage={this.setLanguage} {...this.state} />
+                      <Banner setFr ={this.setFr} setAr ={this.setAr} setEn ={this.setEn}{...this.state} />
 
                       <Copy {...this.state} mode={"congrat"}/>
                       <Logo {...this.state}/>
@@ -321,7 +343,7 @@ class Biggie extends Component {
 
                         { this.callGateway(3)}
 
-                          <Banner setLanguage={this.setLanguage} {...this.state} />
+                          <Banner setFr ={this.setFr} setAr ={this.setAr} setEn ={this.setEn}{...this.state} />
 
                           <Copy {...this.state} mode={"congrat"}/>
                           <Logo {...this.state}/>
@@ -341,7 +363,7 @@ class Biggie extends Component {
 
                     { this.callGateway(4)}
 
-                      <Banner setLanguage={this.setLanguage} {...this.state} />
+                      <Banner setFr ={this.setFr} setAr ={this.setAr} setEn ={this.setEn}{...this.state} />
 
                       <Copy {...this.state} mode={"congrat"}/>
                       <Logo {...this.state}/>
@@ -361,7 +383,7 @@ class Biggie extends Component {
 
                     {this.callGateway(5)}
 
-                      <Banner setLanguage={this.setLanguage} {...this.state} />
+                      <Banner setFr ={this.setFr} setAr ={this.setAr} setEn ={this.setEn}{...this.state} />
 
                       <Copy {...this.state} mode={"congrat"}/>
                       <Logo {...this.state}/>
@@ -458,7 +480,31 @@ class Banner extends Component {
     return (
       <div className="bar">
         <div className = "language-selection">
-          <button className= "btn btn-default  .btn-sm lang-but" onClick={this.props.setLanguage}> {this.props.languagebutton}</button>
+
+            <div className = "language-button">
+              <LangSlect clik={this.props.setAr} lan={"ar"}/>
+            </div>
+            <div className = "language-button">
+              <LangSlect clik={this.props.setEn} lan={"en"}/>
+            </div>
+            <div className = "language-button">
+              <LangSlect clik={this.props.setFr} lan={"fr"}/>
+            </div>
+
+        </div>
+      </div>
+    )
+  }
+}
+class LangSlect extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render(){
+    return (
+      <div className="bar">
+        <div className = "language-selection">
+          <button className= "btn btn-default  .btn-sm lang-but" onClick={this.props.clik}> {this.props.lan}</button>
         </div>
       </div>
     )
